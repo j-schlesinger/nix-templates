@@ -34,25 +34,25 @@
             ] ++ extraPkgs;
 
             shellHook = ''
+              export NIX_PROVIDED_LSPS="pyright,ruff,harper_ls"
+              export LIBCLANG_PATH="{$pkgs.llvmPackages.libclang}/lib";
+              export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath extraPkgs}:$LD_LIBRARY_PATH"
+              # prevent rye/uv from installing themselves 
+              export RYE_PY_BIN="${pythonPackage}/bin/python"
+              export UV_PYTHON="${pythonPackage}/bin/python"
+              if [ ! -f "pyproject.toml" ]; then
+                echo "Pyproject not initialized, creating..."
+                uv init
+              fi
 
-                export LIBCLANG_PATH="{$pkgs.llvmPackages.libclang}/lib";
-                export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath extraPkgs}:$LD_LIBRARY_PATH"
-                # prevent rye/uv from installing themselves 
-                export RYE_PY_BIN="${pythonPackage}/bin/python"
-                export UV_PYTHON="${pythonPackage}/bin/python"
-                if [ ! -f "pyproject.toml" ]; then
-                  echo "Pyproject not initialized, creating..."
-                  uv init
-                fi
+              # run additional shellHook from child
+              ${extraShellHook}
 
-                # run additional shellHook from child
-                ${extraShellHook}
-
-                if [[ $(ps -p $PPID -o comm=) != "fish" ]]; then
-                  echo "🐠 Entering Fish shell..."
-                  exec fish
-                fi 
-              '';
+              if [[ $(ps -p $PPID -o comm=) != "fish" ]]; then
+                echo "🐠 Entering Fish shell..."
+                exec fish
+              fi 
+            '';
           };
       };
       # if you accidentally run nix develop in the repo
