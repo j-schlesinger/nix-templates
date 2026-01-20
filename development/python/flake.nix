@@ -38,7 +38,8 @@
               export LIBCLANG_PATH="{$pkgs.llvmPackages.libclang}/lib";
               export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath extraPkgs}:$LD_LIBRARY_PATH"
               # prevent rye/uv from installing themselves 
-              export RYE_PY_BIN="${pythonPackage}/bin/python"
+              # export RYE_PY_BIN="${pythonPackage}/bin/python"
+              export UV_PYTHON_PREFERENCE="only-system"
               export UV_PYTHON="${pythonPackage}/bin/python"
               if [ ! -f "pyproject.toml" ]; then
                 echo "Pyproject not initialized, creating..."
