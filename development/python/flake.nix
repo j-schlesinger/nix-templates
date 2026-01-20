@@ -29,7 +29,7 @@
               # LSPs 
               pyright
               ruff
-              harper-ls
+              harper
               pythonPackage
             ] ++ extraPkgs;
 
