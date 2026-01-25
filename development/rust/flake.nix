@@ -22,6 +22,8 @@
               buildInputs = with pkgs; [
                 cargo
                 rustc
+                bacon
+                clippy
                 rust-analyzer
                 rust-bin.beta.latest.default
                 llvmPackages.clang
@@ -30,7 +32,7 @@
 
               shellHook = ''
                 export LIBCLANG_PATH="{$pkgs.llvmPackages.libclang}/lib";
-                if [ ! -f "cargo.toml" ]; then
+                if [ ! -f "Cargo.toml" ]; then
                   echo "cargo.toml not initialized, creating..."
                   cargo init
                 fi
