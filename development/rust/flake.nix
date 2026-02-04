@@ -23,6 +23,7 @@
                 cargo
                 rustc
                 bacon
+                bacon-ls
                 clippy
                 rust-analyzer
                 rust-bin.beta.latest.default
@@ -31,6 +32,7 @@
               ] ++ extraPkgs;
 
               shellHook = ''
+                export NIX_PROVIDED_LSPS="rust_analyzer"
                 export LIBCLANG_PATH="{$pkgs.llvmPackages.libclang}/lib";
                 if [ ! -f "Cargo.toml" ]; then
                   echo "cargo.toml not initialized, creating..."
