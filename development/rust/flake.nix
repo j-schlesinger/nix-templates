@@ -23,7 +23,6 @@
                 cargo
                 rustc
                 bacon
-                bacon-ls
                 clippy
                 rust-analyzer
                 rust-bin.beta.latest.default
