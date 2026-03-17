@@ -29,7 +29,7 @@
             ] ++ extraPkgs;
 
             shellHook = ''
-              export NIX_PROVIDED_LSPS="harper_ls,taxlab"
+              export NIX_PROVIDED_LSPS="harper_ls,texlab"
               # run additional shellHook from child
               ${extraShellHook}
 
