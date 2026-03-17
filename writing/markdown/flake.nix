@@ -1,5 +1,5 @@
 {
-  description = "DevShell for Writing in English";
+  description = "DevShell for Writing Markdown in English";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -23,15 +23,13 @@
             # TexLive: https://nixos.wiki/wiki/TexLive
             buildInputs = with pkgs; [
               harper
-              texlab
               pandoc
-              texlive.combined.scheme-medium
+              markdown-oxide
               proselint
-              textlsp
             ] ++ extraPkgs;
 
             shellHook = ''
-              export NIX_PROVIDED_LSPS="harper_ls,texlab,proselint,textlsp"
+              export NIX_PROVIDED_LSPS="harper_ls,markdown_oxide"
               # run additional shellHook from child
               ${extraShellHook}
 
