@@ -1,11 +1,11 @@
 {
-  description = "A development shell for writing prose in LaTeX"
+  description = "A development shell for writing prose in LaTeX";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     # points to parent dev env repository 
-    writing-toolchain.url = "github:j-schlesinger/nix-environments?dir=writing/latex";
+    writing-toolchain.url = "github:j-schlesinger/nix-templates?dir=writing/latex";
   };
 
   outputs = { self, nixpkgs, flake-utils, writing-toolchain }:

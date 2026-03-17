@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     # points to parent dev env repository 
-    python-toolchain.url = "github:j-schlesinger/nix-environments/development?dir=python";
+    python-toolchain.url = "github:j-schlesinger/nix-templates?dir=development/python";
   };
 
   outputs = { self, nixpkgs, flake-utils, python-toolchain }:
